@@ -24,12 +24,12 @@ const initialAvailability = {
     Sunday: {day: false, evening:false},
 }
 
-function EmployeeAvailability() {
+function EmployeeAvailability({currentUser}) {
     const [availability, setAvailability] = useState(initialAvailability);
 
 
     const handleSave =  async () => {
-      const availabilityRef = doc(db, "availability", user.uid);
+      const availabilityRef = doc(db, "availability", currentUser.uid);
       try {
       await setDoc(availabilityRef, availability);
       alert("Müsaitlik durumu kaydedildi.");        

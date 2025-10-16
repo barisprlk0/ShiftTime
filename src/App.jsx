@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import {auth} from '../src/firebaseConfig';
 
 
-function HomePage({ isAuthenticated }) {
+function HomePage({ currentUser }) {
   const navigate = useNavigate();
 
   return (
@@ -18,7 +18,7 @@ function HomePage({ isAuthenticated }) {
       <button onClick={() => navigate("/manage-shifts" )} className="m-3">
         Go to Manage Shifts
       </button>
-      {!isAuthenticated && (<>
+      {!currentUser && (<>
        
 
       <button onClick={() => navigate("/auth")} className="m-3">
@@ -32,21 +32,21 @@ function HomePage({ isAuthenticated }) {
 
 function App() {
 
-  const[isAuthenticated,setIsAuthenticated]=useState(false);
+  const[currentUser,setCurrentUser]=useState(null);
   useEffect(()=>onAuthStateChanged(auth,(user)=>{
     if(user){
-      setIsAuthenticated(true);
+      setCurrentUser(user);
     }else{
-      setIsAuthenticated(false);
+      setCurrentUser(null);
     }
   }),[])
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage isAuthenticated={isAuthenticated} />} />
+        <Route path="/" element={<HomePage currentUser={currentUser} />} />
         
-        <Route path="/availability" element={<EmployeeAvailability />} />
-        <Route path="/manage-shifts" element={<ManageShifts />} />
+        <Route path="/availability" element={<EmployeeAvailability currentUser={currentUser} />}  />
+        <Route path="/manage-shifts" element={<ManageShifts currentUser={currentUser} />} />
         <Route path="/auth" element={<AuthPage />} />
 
   
