@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import '../css/EmployeeAvailability.css';
+import {doc, setDoc} from 'firebase/firestore';
+import {db} from '../firebaseConfig';
+
+
 
 const daysOfWeek={
     Monday: "Pazartesi",
@@ -23,13 +27,25 @@ const initialAvailability = {
 function EmployeeAvailability() {
     const [availability, setAvailability] = useState(initialAvailability);
 
+
+    const handleSave =  async () => {
+      const availabilityRef = doc(db, "availability", user.uid);
+      try {
+      await setDoc(availabilityRef, availability);
+      alert("Müsaitlik durumu kaydedildi.");        
+      } catch (error) {
+        alert("Müsaitlik durumu kaydedilemedi.");
+        console.error("Error adding document: ", error);
+      }
+
+    }
     return (
        <div>
         <div className="card customCard">
 
         <h3 className="myHeader">Müsaitlik Tablosu</h3>
 
-        <table class="table table-hover table-borderless customTable ">
+        <table className="table table-hover table-borderless customTable ">
   <thead>
     <tr> 
       <th scope="col"></th>
@@ -83,7 +99,7 @@ function EmployeeAvailability() {
 </table>
 <div className="buttonContainer">
 
-<button className="btn btn-primary w-25 customButton">
+<button className="btn btn-primary w-25 customButton" onClick={handleSave} >
     <span className="btnText">Kaydet</span>
 </button>
 
