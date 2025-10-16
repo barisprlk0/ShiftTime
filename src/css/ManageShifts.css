@@ -1,0 +1,100 @@
+.MScardContainer{
+    opacity: 0.90;
+}
+.MSmyHeader{
+    text-align: center;
+    margin-top: 20px;
+    color: #000;
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 0px;
+    margin-bottom: 50px;
+}
+
+.MScustomCard{
+    width: 720px;
+    margin: 50px auto;
+    padding:10px;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.90;
+    border: none;
+}
+.customTable{
+    width: 100%;
+    background-color: #fff;}
+.MStableTitleText{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bolder;
+    color: #000;
+}
+
+.MSbuttonContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.MScustomButton{
+    padding: 5px 5px;
+    background-color: #496EEB;
+    border: none;
+    border-radius: 12px;
+    
+}
+.MSbtnText{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.jobRoleShiftContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;        
+    width: 30px;
+    height: 40px;
+    border-radius:15px;
+    background-color: #f8f2f2;
+}
+.jobRoleShiftNumber{
+    font-size: 18px;
+    font-weight: regular;
+    color: #000000;
+}
+.svgFile{
+    margin-right: 50px;
+    margin-top: 50px;
+}
+.customModal{
+    width: 500px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+        
+}
+.iconBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin:3px;
+    
+
+
+
+}
+
+.iconGridContainer{
+    max-width: 420px;
+    flex-wrap: wrap;
+    max-height: 120px; 
+    overflow-y: auto;  
+    justify-content: center;   
+
+}

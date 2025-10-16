@@ -1,0 +1,22 @@
+p{
+      white-space: nowrap;
+}
+
+.AUbtnText{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+      white-space: nowrap;   
+
+}
+.AUbuttonContainer{
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.AUSpanText{
+      color: #496EEB;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;  
+      text-decoration: underline;
+}

@@ -1,0 +1,62 @@
+body{
+    background-image: url("../assets/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  font-family: 'Inter', sans-serif;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.myHeader{
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 0px;
+}
+
+
+.customCard{
+    width: 720px;
+    margin: 50px auto;
+    padding:10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    opacity: 0.9;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.customButton{
+    padding: 5px 5px;
+    background-color: #496EEB;
+    border: none;
+    border-radius: 12px;
+    
+}
+.btnText{
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.big-switch .form-check-input {
+    width: 48px;     
+    height: 28px;     
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.big-switch .form-check-input:checked {
+    background-color: #496EEB; 
+    transition: 0.1s;
+
+}
+
