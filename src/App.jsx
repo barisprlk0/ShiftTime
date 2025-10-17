@@ -16,7 +16,7 @@ function HomePage({ currentUser }) {
         Go to Availability
       </button>
       <button onClick={() => navigate("/manage-shifts" )} className="m-3">
-        Go to Manage Shifts kaan maldir
+        Go to Manage Shifts
       </button>
       {!currentUser && (<>
        
