@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import '../css/Auth.css';
 import {auth,db} from '../firebaseConfig';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc,getDoc } from 'firebase/firestore';
 import {useNavigate} from 'react-router-dom';
 
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
@@ -19,11 +19,41 @@ function AuthPage() {
   const[role,setRole]=useState("");
   const navigate=useNavigate();
 
+  const [dynamicRoles, setDynamicRoles] =useState<string[]>([]);
+  const [loadingRoles, setLoadingRoles] = useState(true);
+
+// AuthPage.jsx içinde, fetchRoles fonksiyonu
+const fetchRoles = async () => {
+    try {
+        const docRef = doc(db, "shift_settings", "current_settings");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists() && docSnap.data().roles) {
+            
+            // ÇÖZÜM BÖLGESİ: r parametresine tür ataması yapıldı
+            const rolesData = docSnap.data().roles
+                .map((r: { name: string }) => r.name) // r artık { name: string } tipindedir.
+                .filter((name: string) => name);
+
+            setDynamicRoles(rolesData);
+        }
+    } catch (error) {
+        console.error("Roller yüklenirken hata:", error);
+    } finally {
+        setLoadingRoles(false);
+    }
+};
+
+useEffect(() => {
+        fetchRoles();
+    }, []);
+
+
   //auth mode 
   const[isRegisterMode,setIsRegisterMode]=useState(true);
 
   const handleRegister = async() => {
-    if(name=="" || surname=="" || email=="" || password==""||role==""){
+    if(name=="" || surname=="" || email=="" || password==""){
       alert("Lütfen tüm alanları doldurunuz.");
       return;
     }
@@ -109,11 +139,17 @@ function AuthPage() {
 
 <div className="form-group my-1 w-50 d-flex align-items-center justify-content-center">
     <p className="m-0 mx-3">Rol</p>
-    <select className="form-control item" id="role" value={role} onChange={(e)=>setRole(e.target.value)}>
-        <option value="">Lütfen Seçiniz</option>
-        <option value="barista">Barista</option>
-        <option value="cooker">Mutfakçı</option>
-        <option value="waiter">Garson</option>
+<select className="form-control item" id="role" value={role} onChange={(e) => setRole(e.target.value)}>
+        <option value="">
+            {loadingRoles ? "Yükleniyor..." : "Lütfen Seçiniz"}
+        </option>
+        
+        {/* DİNAMİK ROL SEÇENEKLERİ */}
+        {dynamicRoles.map((r) => (
+            <option key={r} value={r.toLowerCase()}>
+                {r}
+            </option>
+        ))}
     </select>
   </div>
 
