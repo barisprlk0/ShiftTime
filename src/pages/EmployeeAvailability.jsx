@@ -5,6 +5,9 @@ import {db} from '../firebaseConfig';
 
 
 
+
+
+function EmployeeAvailability({currentUser}) {
 const daysOfWeek={
     Monday: "Pazartesi",
     Tuesday: "Salı",
@@ -20,11 +23,9 @@ const initialAvailability = {
     Wednesday: {day: true, evening:false},
     Thursday: {day: true, evening:false},
     Friday: {day: true, evening:false},
-    Saturday: {day: false, evening:false},
-    Sunday: {day: false, evening:false},
+    Saturday: {day: true, evening:false},
+    Sunday: {day: true, evening:false},
 }
-
-function EmployeeAvailability({currentUser}) {
     const [availability, setAvailability] = useState(initialAvailability);
 
 

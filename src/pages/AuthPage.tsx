@@ -7,16 +7,14 @@ import {useNavigate} from 'react-router-dom';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
 function AuthPage() {
 
-
-
-
-
   //form states
   const[name,setName]=useState("");
   const[surname,setSurname]=useState("");
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
   const[role,setRole]=useState("");
+
+  
   const navigate=useNavigate();
 
   const [dynamicRoles, setDynamicRoles] =useState<string[]>([]);
@@ -75,6 +73,7 @@ useEffect(() => {
     }catch(error){
       if(error instanceof Error){
         alert(error.message);
+
       } else{
         alert("Kayıt sırasında bir hata oluştu.");
       }
