@@ -4,7 +4,7 @@ import { IoMdAddCircleOutline, IoIosRemoveCircleOutline } from "react-icons/io";
 import calendarImage from '../assets/calendar.png';
 import "../css/ManageShifts.css";
 import { Modal, Button } from "react-bootstrap";
-import { db,storage } from '../firebaseConfig';
+import { db } from '../firebaseConfig';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import * as Icons from "react-icons/io";
 
